@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shineziel — 20th Birthday</title>
+
+  <!-- ========== 🎨 STYLES ========== -->
+  <style>
+  :root {
+  --bg: linear-gradient(180deg, #2b0000 0%, #000000 75%);
+  --card: rgba(255, 255, 255, 0.05);
+  --accent: #ff7070;
+  --muted: #c9c9c9;
+  --glass: rgba(255, 255, 255, 0.05);
+  font-size: 16px;
+}
+
+/* RESET & BASE */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: #fff;
+  background: var(--bg);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ================= HEADER & MAIN (above scrapbook) ================= */
+/* ===== HEADER STYLING ===== */
+
+.top-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+/* Left-side title text */
+.header-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  text-shadow: 0 0 6px rgba(255, 192, 203, 0.5);
+  user-select: none;
+  margin: 0;
+}
+
+/* Right-side flower button (now circular) */
+.nav-flower {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 182, 193, 0.4);
+  border-radius: 50%;            /* makes it round 🌸 */
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 192, 203, 0.3);
+}
+
+/* Hover effects */
+.nav-flower:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 15px rgba(255, 192, 203, 0.7);
+}
+
+/* Flower image inside */
+.nav-flower img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Hover animation */
+.nav-flower:hover img {
+  transform: scale(1.15) rotate(8deg);
+  filter: drop-shadow(0 0 10px rgba(255, 192, 203, 0.9));
+}
+
+/* Gentle pulsing glow (optional) */
+@keyframes softGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(255, 182, 193, 0.9));
+  }
+}
+.glow {
+  animation: softGlow 3s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .header-title {
+    font-size: 1.2rem;
+  }
+  .nav-flower {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.back-btn {
+  position: absolute;
+  top: 50%;
+  right: 90px; /* adjust distance from header button */
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), rgba(255,255,255,0.05));
+  backdrop-filter: blur(6px);
+  box-shadow:
+    0 0 6px rgba(255, 255, 255, 0.3),
+    inset 0 0 6px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.back-btn img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    border-radius: 50%;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.back-btn:hover {
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25), rgba(255,255,255,0.1));
+  box-shadow:
+    0 0 15px rgba(255, 192, 203, 0.7),
+    inset 0 0 8px rgba(255, 255, 255, 0.15);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.back-btn:hover img {
+  opacity: 1;
+  transform: scale(1.15) rotate(8deg);
+  filter: drop-shadow(0 0 10px rgba(255, 192, 203, 0.9));
+}
+
+
+main.container {
+  top: 100px;
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  display: grid;
+  place-items: center;
+  padding: 48px 0;
+  position: relative;
+  z-index: 4;
+}
+
+/* CARD AREA */
+.card {
+  width: 1100px;
+  max-width: 96%;
+  background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)),
+              url("IMG_7020.JPG") center/cover no-repeat;
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+}
+
+/* ================= SCRAPBOOK ================= */
+.scrapbook {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bg);
+}
+
+/* dreamy Polaroids */
+.polaroid {
+  position: absolute;
+  width: 220px;
+  background: #fff9f7;
+  border-radius: 8px;
+  padding: 10px 10px 38px;
+  box-shadow:
+    0 0 25px rgba(255, 200, 200, 0.05),
+    0 0 60px rgba(255, 150, 150, 0.06),
+    0 10px 40px rgba(0, 0, 0, 0.45);
+  transform-origin: center;
+  display: inline-block;
+  overflow: hidden;
+  opacity: 0.9;
+  filter: contrast(97%) brightness(101%) saturate(94%) blur(0.2px);
+  transition: opacity 0.6s ease, filter 1.2s ease, transform 0.6s ease;
+  user-select: none;
+  pointer-events: auto;
+}
+.polaroid:hover {
+  opacity: 1;
+  filter: brightness(107%) blur(0);
+  transform: translateY(-4px);
+}
+
+/* make photo visible again */
+.polaroid .photo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  filter: brightness(0.98) contrast(1.03);
+}
+
+/* captions */
+.polaroid .caption {
+  position: absolute;
+  bottom: 8px;
+  left: 12px;
+  right: 12px;
+  font-size: 12px;
+  color: #332;
+  opacity: 0.85;
+  font-weight: 600;
+  font-family: "Segoe Script", "Brush Script MT", cursive;
+  pointer-events: none;
+}
+.polaroid .date {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 11px;
+  color: #777;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+/* washi tape */
+.tape {
+  position: absolute;
+  width: 72px;
+  height: 24px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.88), rgba(255,230,230,0.84));
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transform: rotate(-12deg);
+  opacity: 0.95;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+.tape.alt {
+  background: linear-gradient(90deg, rgba(255,210,200,0.9), rgba(255,190,180,0.86));
+  transform: rotate(10deg);
+}
+
+/* faint vignette corners */
+.polaroid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at center, rgba(0,0,0,0.03) 20%, transparent 60%);
+  mix-blend-mode: multiply;
+}
+
+/* handwritten notes */
+.scribble {
+  position: absolute;
+  font-family: "Segoe Script", "Brush Script MT", cursive;
+  color: rgba(255, 240, 240, 0.6);
+  text-shadow: 0 0 6px rgba(255, 100, 100, 0.2);
+  transform-origin: left center;
+  pointer-events: none;
+  filter: blur(0.2px);
+}
+
+/* STICKERS */
+.sticker {
+  position: absolute;
+  width: 80px;
+  height: auto;
+  opacity: 0.85;
+  pointer-events: none;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  filter: drop-shadow(0 0 10px rgba(255, 120, 120, 0.3));
+  z-index: 5; /* <—— this line makes it overlap */
+}
+
+.sticker:hover {
+  opacity: 1;
+  transform: scale(1.1) rotate(3deg);
+}
+
+/* film grain */
+.scrapbook::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/3e/Film_grain_overlay.png");
+  opacity: 0.05;
+  mix-blend-mode: soft-light;
+  animation: grainDrift 14s linear infinite;
+}
+@keyframes grainDrift {
+  from { background-position: 0 0; }
+  to { background-position: 400px 400px; }
+}
+
+@media (max-width: 720px) {
+  .polaroid { width: 140px; padding-bottom: 28px; }
+  .polaroid .photo { height: 110px; }
+  .tape { width: 60px; height: 20px; }
+}
+
+/* ========== REST OF YOUR EXISTING STYLES (landing, player, etc.) BELOW ========== */
+/* (keep your PAGE 1, 2, 3, etc. CSS unchanged from your original) */
+
+
+
+    /* ========== PAGE 1: LANDING ========== */
+    .landing {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .intro {
+      flex: 1;
+    }
+    .intro h2 {
+      font-size: 28px;
+      margin: 0 0 6px;
+      color: #fff;
+    }
+    .intro p { margin: 0; color: var(--muted); }
+
+    .flower-btn {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--glass);
+      border: 2px dashed rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      flex-shrink: 0;
+    }
+    .flower-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 80, 80, 0.4);
+    }
+    .flower-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    /* Glow Animation */
+    .flower-btn:hover img {
+      animation: pulse 2s infinite ease-in-out;
+    }
+    @keyframes pulse {
+      0%, 100% { filter: drop-shadow(0 0 0 rgba(255, 100, 100, 0.6)); }
+      50% { filter: drop-shadow(0 0 16px rgba(255, 120, 120, 0.8)); }
+    }
+
+    /* ========== PAGE 2: PLAYER + LYRICS ========== */
+    .player-area {
+      margin-top: 18px;
+      display: flex;
+      gap: 18px;
+    }
+    .mini-spotify {
+      width: 320px;
+      padding: 12px;
+      border-radius: 12px;
+      background: var(--glass);
+    }
+
+    .mini-spotify audio {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .lyrics-wrap {
+      position: relative;
+      flex: 1;
+      max-height: 360px;
+      overflow-y: auto;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(6px);
+      box-shadow: inset 0 0 20px rgba(255, 180, 180, 0.08);
+    }
+    .lyric-line {
+      padding: 6px 8px;
+      border-radius: 8px;
+      margin: 6px 0;
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.3s ease, text-shadow 0.8s ease, color 0.5s ease;
+      color: #e8e8e8;
+      text-shadow: 0 0 4px rgba(255, 150, 150, 0.1);
+    }
+    .lyric-line.active {
+      color: #fff;
+      background: rgba(255, 130, 130, 0.18);
+      text-shadow:
+        0 0 8px rgba(255, 160, 160, 0.7),
+        0 0 16px rgba(255, 100, 100, 0.4),
+        0 0 24px rgba(255, 80, 80, 0.25);
+      transform: scale(1.02);
+      animation: lyricGlow 3.5s ease-in-out infinite;
+    }
+    @keyframes lyricGlow {
+      0%, 100% {
+        text-shadow:
+          0 0 8px rgba(255, 160, 160, 0.7),
+          0 0 16px rgba(255, 100, 100, 0.4),
+          0 0 24px rgba(255, 80, 80, 0.25);
+      }
+      50% {
+        text-shadow:
+          0 0 12px rgba(255, 200, 200, 0.9),
+          0 0 28px rgba(255, 150, 150, 0.6),
+          0 0 40px rgba(255, 100, 100, 0.35);
+      }
+    }
+    .lyrics-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(
+          rgba(255,255,255,0.08) 1px,
+          transparent 1px
+      );
+      background-size: 2px 2px;
+      opacity: 0.25;
+      pointer-events: none;
+      animation: sparkleDrift 12s linear infinite;
+    }
+    @keyframes sparkleDrift {
+      0% { background-position: 0 0; }
+      100% { background-position: 200px 400px; }
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* ========== PAGE 3: LETTER ========== */
+    .letter {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .paper {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 18px;
+      border-radius: 12px;
+      color: #fff;
+    }
+
+    footer {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .player-area { flex-direction: column; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ======================== SCRAPBOOK COLLAGE (replace photo placeholders) ======================== -->
+  <div class="scrapbook" aria-hidden="true">
+    <!-- Example polaroid pieces. Replace src with your own photos.
+         You can add/remove/move these blocks. Positioning is inline-style for quick manual control. -->
+    <figure class="polaroid" style="top:10%; left:6%; width:250px; padding-bottom:30px; transform: rotate(-12deg); z-index:1;">
+      <img class="photo" src="IMG_2444.jpg" alt="photo1">
+      <figcaption class="caption">Forever love</figcaption>
+      <div class="date">05.13.2025</div>
+      <!-- tape -->
+      <div class="tape" style="top:-10px; left:18px; transform: rotate(-12deg);"></div>
+    </figure>
+
+    <figure class="polaroid" style="top:8%; left:32%; width:200px; padding-bottom:46px; transform: rotate(8deg); z-index:2;">
+      <img class="photo" src="IMG_2314.jpg" alt="photo2">
+      <figcaption class="caption">At CSU Hirayaaa</figcaption>
+      <div class="date">05.09.2025</div>
+      <div class="tape alt" style="top:-12px; right:16px; transform: rotate(6deg);"></div>
+    </figure>
+
+    <figure class="polaroid" style="top:20%; right:6%; width:240px; padding-bottom:46px; transform: rotate(-6deg); z-index:3;">
+      <img class="photo" src="IMG_2830.jpg" alt="photo3">
+      <figcaption class="caption">Cleansing done, Shat na</figcaption>
+      <div class="date">05.15.2025</div>
+      <div class="tape" style="top:-8px; left:18px; transform: rotate(-18deg);"></div>
+    </figure>
+
+    <figure class="polaroid" style="top:43%; left:10%; width:180px; padding-bottom:42px; transform: rotate(14deg); z-index:2;">
+      <img class="photo" src="IMG_2962.jpg" alt="photo4">
+      <figcaption class="caption">Wheat fields</figcaption>
+      <div class="date">—</div>
+      <div class="tape alt" style="top:-8px; left:12px; transform: rotate(4deg);"></div>
+    </figure>
+
+    <figure class="polaroid" style="top:3%; left:56%; width:280px; padding-bottom:56px; transform: rotate(-4deg); z-index:4;">
+      <img class="photo" src="IMG_0082.JPG" alt="photo5" style="height:190px;">
+      <figcaption class="caption">You & Me Live in Kronikelz</figcaption>
+      <div class="date">05.07.2025</div>
+      <div class="tape" style="top:-10px; right:36px; transform: rotate(6deg);"></div>
+    </figure>
+
+    <figure class="polaroid" style="bottom:6%; left:8%; width:220px; padding-bottom:46px; transform: rotate(-8deg); z-index:1;">
+      <img class="photo" src="IMG_0817.JPG" alt="photo6">
+      <figcaption class="caption">At the Beach, I miss You!</figcaption>
+      <div class="date"></div>
+      <div class="tape alt" style="top:-10px; left:22px; transform: rotate(-14deg);"></div>
+    </figure>
+
+    <figure class="polaroid" style="bottom:10%; right:8%; width:240px; padding-bottom:46px; transform: rotate(10deg); z-index:2;">
+      <img class="photo" src="IMG_2894.jpg" alt="photo7">
+      <figcaption class="caption">Smiles, Lunch Date with you</figcaption>
+      <div class="date">—</div>
+      <div class="tape" style="top:-8px; left:18px; transform: rotate(2deg);"></div>
+    </figure>
+
+    <figure class="polaroid" style="top:72%; left:46%; width:280px; padding-bottom:56px; transform: rotate(-6deg); z-index:4;">
+      <img class="photo" src="SHIHMI1.jpg" alt="photo5" style="height:190px;">
+      <figcaption class="caption">I love you, Shining Star Deiah.</figcaption>
+      <div class="date">06.11.2025</div>
+      <div class="tape" style="top:-10px; right:36px; transform: rotate(6deg);"></div>
+    </figure>
+
+    <!-- handwritten notes / scribbles -->
+    <div class="scribble" style="top:35%; left:50%; font-size:30px; transform: rotate(-8deg);">All you need is love</div>
+    <div class="scribble" style="top:83%; left:63%; font-size:40px; transform: rotate(-6deg);">Forever</div>
+
+    <img src="ADRIANNE1.png" class="sticker" style="top: 27%; left: 70%; width: 170px; transform: rotate(-12deg);">
+    <img src="ADRIANNE2.png" class="sticker" style="top: 70%; left: 25%; width: 300px; transform: rotate(-8deg);">
+    <img src="ADRIANNE4.png" class="sticker" style="bottom: 7%; right: 21%; width: 170px; transform: rotate(-6deg);">
+    <img src="ADRIANNE3.png" class="sticker" style="top: 20%; left: 22%; width: 230px; transform: rotate(-8deg);">
+    <img src="ADRIANNE7.png" class="sticker" style="top: 15%; left: 46%; width: 220px; transform: rotate(-12deg);">
+    <img src="ADRIANNE6.png" class="sticker" style="top: 40%; left: O.5%; width: 230px; transform: rotate(8deg);">
+    <img src="ADRIANNE5.png" class="sticker" style="bottom: 34%; right: -6%; width: 350px; transform: rotate(-6deg);">
+
+  </div>
+
+  <!-- ========== HEADER ========== -->
+<!-- Header -->
+    <header class="top-header">
+        <h1 class="header-title">Shineziel Deiah, 20</h1>
+            <button id="navFlowerTop" class="nav-flower" title="Go to Letter">
+                <img src="button1.png" alt="Go to Letter" class="glow">
+            </button>
+            <button class="header-btn back-btn" onclick="goBackPage()">
+                <img src="button 3.png" alt="Back" />
+            </button>
+    </header>
+
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="container">
+    <div class="card">
+
+      <!-- 🌸 PAGE 1: LANDING -->
+      <div class="landing" id="page1">
+        <div class="flower-btn" id="flowerBtn">
+          <img src="al2.jpg " alt="Flower Button">
+        </div>
+        <div class="intro">
+          <h2>Happy 20th Birthday, <em>Shineziel Deiah</em></h2>
+          <p>Hover the flower and click to open your surprise 🌸</p>
+        </div>
+      </div>
+
+      <!-- 🎵 PAGE 2: MUSIC + LYRICS -->
+      <div id="page2" style="display: none;">
+        <div class="player-area">
+          <div class="mini-spotify">
+            <h3>Playing “Not a Lot, Just Forever” — Adrianne Lenker</h3>
+            <audio id="localPlayer" src="Not a Lot, Just Forever.mp3" controls></audio>
+          </div>
+
+          <div class="lyrics-wrap" id="lyrics"></div>
+        </div>
+
+        <div style="margin-top: 12px; display: flex; align-items: center;">
+          <div class="flower-btn" id="flowerBtn2" style="width: 96px; height: 96px;">
+            <img src="button1.png" alt="Flower Button2">
+              <path d="M12 2s-1.2 3.8-4 5-4.5 5-2 7 6 2 6 2 0 4 4 4 4-4 4-4 3.2 0 6-2-1-6-2-7-2.8-4-4-5-4-3-4-3z" fill="rgba(255,100,100,0.3)"/>
+            </svg>
+          </div>
+          <div style="margin-left: 12px; color: var(--muted);">
+            Click the flower to open your long letter 🌹
+          </div>
+        </div>
+      </div>
+
+      <!-- 💌 PAGE 3: LETTER -->
+      <div id="page3" class="letter">
+        <h2>A letter for my beloved SSD, Shining Star Deiah... 💖</h2>
+        <div class="paper" id="letterContent">
+           <p><b>Who is Shineziel Deiah?</b></p>
+
+            <p>Shineziel Deiah is a star I was lucky enough to meet officially on April 22, 2025.</p>
+
+            <p>She is the kind of star that glows quietly but endlessly. The kind that makes the sky feel less lonely just by being there. She shines brightest when her love for music comes alive — when her fingers touch the strings or when her voice becomes a quiet prayer only the universe fully understands. But even stars have nights when their light feels small.</p>
+
+            <p>Deiah carries her own shadows too. A soft sadness that sits on her chest when no one is looking. Behind her smile, she is still just a kid sometimes. Hurting. Tired. Overthinking. Trying so hard to stay strong for everyone while she quietly falls apart inside. She feels deeply. She loves quietly but fiercely. She breaks without a sound. And still, she wakes up every day and tries again. That alone makes her extraordinary.</p>
+
+            <p>To me, Deiah is more than a star.</p>
+
+            <p><em>She is the love of my life. <br>So happy 20th birthday, my palangga, my shinibabe, my baibee, my sugarpie honeybunch sugar plumplum, my wifey, my woman, my baby.</br></em></p>
+
+            <p>I wish you peace, the kind that stays even when life gets heavy.  
+            <br>I wish you healing, in your heart, in your mind, in all the hidden corners no one else sees.
+            <br>I wish you strength, not the kind that never cries, but the kind that holds your hand through the tears and keeps going.
+            <br>I wish your music never fades. I hope your passion keeps finding its way from your fingertips into peoples souls.
+            <br>I wish for your dreams, even the smallest ones, to feel safe and possible.
+            <br>I wish your body gets the rest it aches for, your mind finds quiet, and your heart finds reasons to feel light again.
+            <br>I wish you growth that is kind and gentle and beautiful.
+            <br>I wish that in this life, you never feel unloved, unseen, or alone — not when I am here, choosing you in every universe.</br></p>
+
+            <p>For us — I wish for more shared mornings and nights, even if the sun rises for you in Canada while it sets for me in the Philippines. I wish for more laughter sent through screens, more “good morning” and “good night” even when they don’t line up. More moments where time zones don’t matter because loving you still feels like breathing. Easy. Natural. Worth every mile in between.</p>
+
+            <p>Thank you for being my once-in-a-lifetime star.</p>
+        </div>
+      </div>
+
+      <footer><small>Made with love. Audio continues across pages. ❤️</small></footer>
+    </div>
+  </main>
+
+  <!-- ========== 🎵 SCRIPT ========== -->
+  <!-- ========== 🎵 SCRIPT ========== -->
+<script>
+/* 🌸 === INITIAL LRC: "Anything" === */
+const lrcText = `
+[00:10.50]Through your eyes, I see
+[00:15.78]A smile you bring to me
+[00:21.03]To your joy, I tether
+[00:25.90]
+[00:26.36]Not a lot, just forever
+[00:31.76]Intertwined, sewn together
+[00:37.00]Like the rock bears the weather
+[00:42.32]Not a lot, just forever
+[00:47.27]
+[00:47.82]My dog barks wildly
+[00:52.98]To protect my infancy
+[00:58.14]From my ex-believer
+[01:03.50]And I try to calm the wolf
+[01:08.84]To remind her I am both
+[01:13.90]Still she tears at my sweater
+[01:19.06]
+[01:19.26]Not a lot, just forever
+[01:24.54]Intertwined, sewn together
+[01:29.75]As the wren sheds her feather
+[01:34.99]Not a lot, just forever
+[01:39.71]
+[01:40.22]And your dearest fantasy
+[01:45.51]Is to grow a baby in me
+[01:50.82]I could be a good mother
+[01:56.11]And I wanna be your wife
+[02:01.28]So I hold you to my knife
+[02:06.61]And I steal your letter
+[02:11.22]
+[02:11.83]Not a lot, just forever
+[02:17.21]Intertwined, sewn together
+[02:22.36]As the rock bears the weather
+[02:27.70]Not a lot, just forever
+[02:32.95]
+[02:38.06]So I bash around the house
+[02:43.37]And the poison stains my mouth
+[02:48.51]She comes, I let her
+[02:53.78]And we share a paradise
+[02:59.00]And I roll them once or twice
+[03:04.05]Can't get much better
+[03:09.17]
+[03:09.32]Not a lot, just forever
+[03:14.53]Intertwined, sewn together
+[03:19.73]As the rock bears the weather
+[03:24.92]Not a lot, just forever
+[03:29.89]Not a lot, just forever
+[03:35.21]Intertwined, sewn together
+[03:40.41]As the wren bares her feathers
+[03:45.59]Not a lot, just forever
+[03:51.42]
+`;
+
+/* 🕒 Parse LRC into [time, text] pairs */
+function parseLRC(lrc) {
+  return lrc
+    .split("\n")
+    .map(line => {
+      const match = line.match(/\[(\d+):(\d+\.\d+)\](.*)/);
+      if (!match) return null;
+      const time = parseInt(match[1]) * 60 + parseFloat(match[2]);
+      const text = match[3].trim();
+      return [time, text];
+    })
+    .filter(Boolean);
+}
+
+/* 🎶 INITIALIZE */
+const player = document.getElementById("localPlayer");
+const lyricsEl = document.getElementById("lyrics");
+const lyricsData = parseLRC(lrcText);
+
+/* Render initial lyrics */
+if (lyricsEl && lyricsData.length) {
+  lyricsData.forEach(([t, line]) => {
+    const div = document.createElement("div");
+    div.className = "lyric-line";
+    div.dataset.time = t;
+    div.textContent = line;
+    div.addEventListener("click", () => {
+      player.currentTime = t;
+      player.play();
+    });
+    lyricsEl.appendChild(div);
+  });
+}
+
+/* ✨ Highlight Active Line */
+let currentLyrics = lyricsData;
+player.addEventListener("timeupdate", () => {
+  const t = player.currentTime;
+  const lines = document.querySelectorAll(".lyric-line");
+  let currentIndex = currentLyrics.findIndex((l, i) =>
+    t >= l[0] && (i === currentLyrics.length - 1 || t < currentLyrics[i + 1][0])
+  );
+  lines.forEach(l => l.classList.remove("active"));
+  if (currentIndex >= 0) {
+    const el = lines[currentIndex];
+    el.classList.add("active");
+    el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+});
+
+/* 🌼 === PAGE NAVIGATION === */
+const flowerBtn = document.getElementById("flowerBtn");
+const flowerBtn2 = document.getElementById("flowerBtn2");
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
+const page3 = document.getElementById("page3");
+const navFlowerTop = document.getElementById("navFlowerTop");
+
+if (flowerBtn) flowerBtn.onclick = () => {
+  page1.style.display = "none";
+  page2.style.display = "block";
+  page3.style.display = "none";
+  player.play();
+};
+if (flowerBtn2) flowerBtn2.onclick = () => {
+  page2.style.display = "none";
+  page3.style.display = "flex";
+};
+if (navFlowerTop) navFlowerTop.onclick = () => {
+  page2.style.display = "none";
+  page3.style.display = "flex";
+};
+
+function goBackPage() {
+  // use computedStyle checks so function works even if display was set via CSS
+  const p1 = page1;
+  const p2 = page2;
+  const p3 = page3;
+  const p3Display = window.getComputedStyle(p3).display;
+  const p2Display = window.getComputedStyle(p2).display;
+
+  if (p3Display === "flex") {
+    // from page3 -> show page2
+    p3.style.display = "none";
+    p2.style.display = "block";
+    // ensure page1 remains hidden
+    p1.style.display = "none";
+  } else if (p2Display === "block" || p2Display === "flex") {
+    // from page2 -> show page1 (landing must be flex)
+    p2.style.display = "none";
+    p1.style.display = "flex";
+    // ensure page3 is hidden
+    p3.style.display = "none";
+  } else {
+    // fallback: always ensure landing shows as flex
+    p1.style.display = "flex";
+    p2.style.display = "none";
+    p3.style.display = "none";
+  }
+}
+
+/* === 🪄 MULTIPLE SONG SUPPORT === */
+const songs = {
+  
+  "Not a Lot, Just Forever": {
+    title: "Not a Lot, Just Forever — Adrianne Lenker",
+    src: "Not a Lot, Just Forever.mp3",
+    lyrics: `
+    [00:10.50]Through your eyes, I see
+[00:15.78]A smile you bring to me
+[00:21.03]To your joy, I tether
+[00:25.90]
+[00:26.36]Not a lot, just forever
+[00:31.76]Intertwined, sewn together
+[00:37.00]Like the rock bears the weather
+[00:42.32]Not a lot, just forever
+[00:47.27]
+[00:47.82]My dog barks wildly
+[00:52.98]To protect my infancy
+[00:58.14]From my ex-believer
+[01:03.50]And I try to calm the wolf
+[01:08.84]To remind her I am both
+[01:13.90]Still she tears at my sweater
+[01:19.06]
+[01:19.26]Not a lot, just forever
+[01:24.54]Intertwined, sewn together
+[01:29.75]As the wren sheds her feather
+[01:34.99]Not a lot, just forever
+[01:39.71]
+[01:40.22]And your dearest fantasy
+[01:45.51]Is to grow a baby in me
+[01:50.82]I could be a good mother
+[01:56.11]And I wanna be your wife
+[02:01.28]So I hold you to my knife
+[02:06.61]And I steal your letter
+[02:11.22]
+[02:11.83]Not a lot, just forever
+[02:17.21]Intertwined, sewn together
+[02:22.36]As the rock bears the weather
+[02:27.70]Not a lot, just forever
+[02:32.95]
+[02:38.06]So I bash around the house
+[02:43.37]And the poison stains my mouth
+[02:48.51]She comes, I let her
+[02:53.78]And we share a paradise
+[02:59.00]And I roll them once or twice
+[03:04.05]Can't get much better
+[03:09.17]
+[03:09.32]Not a lot, just forever
+[03:14.53]Intertwined, sewn together
+[03:19.73]As the rock bears the weather
+[03:24.92]Not a lot, just forever
+[03:29.89]Not a lot, just forever
+[03:35.21]Intertwined, sewn together
+[03:40.41]As the wren bares her feathers
+[03:45.59]Not a lot, just forever
+[03:51.42]
+    `
+  },
+  "Anything": {
+    title: "Anything — Adrianne Lenker",
+    src: "anything.mp3",
+    lyrics: `
+    [00:07.35]Staring down the barrel of the hot sun
+[00:10.29]Shining with the sheen of a shotgun
+[00:13.20]Carol has a little if we need some
+[00:15.83]Joa has a ride if we wanna come
+[00:18.46]
+[00:18.85]Hanging your jeans with a clothes pin
+[00:21.71]Skin still wet, still on my skin
+[00:24.80]Mango in your mouth, juice dripping
+[00:27.34]Shoulder of your shirtsleeve slipping
+[00:30.20]
+[00:30.46]Christmas Eve with your mother and sis
+[00:33.38]Don't wanna fight, but your mother insists
+[00:36.03]Dog's white teeth slice right through my fist
+[00:38.91]Drive to the ER and they put me on risk
+[00:41.74]
+[00:41.95]Grocery store list, now you get pissed
+[00:44.75]Unchecked calls and messages
+[00:47.26]I don't wanna be the owner of your fantasy
+[00:50.33]I just wanna be a part of your family
+[00:52.82]
+[00:53.03]And I don't wanna talk about anything
+[00:56.12]I don't wanna talk about anything
+[00:58.97]I wanna kiss, kiss your eyes again
+[01:01.81]Wanna witness your eyes looking
+[01:04.74]I don't wanna talk about anyone
+[01:07.56]I don't wanna talk about anyone
+[01:10.49]I wanna sleep in your car while you're driving
+[01:13.80]Lay on your lap when I'm crying
+[01:16.16]
+[01:16.64]Circle of pine and red oak
+[01:19.29]Circle of moss and fire smoke
+[01:22.19]Fan on the ceiling like a wheel spoke
+[01:25.40]Push the clutch and I pull the choke
+[01:27.74]
+[01:28.08]Wanna listen to the sound of you blinking
+[01:30.74]Wanna listen to your hands soothe
+[01:33.94]Listen to your heart beating
+[01:36.78]Listen to the way you move
+[01:39.30]
+[01:39.41]And I don't wanna talk about anything
+[01:42.34]I don't wanna talk about anything
+[01:45.11]I wanna kiss, kiss your eyes again
+[01:48.07]Wanna witness your eyes looking
+[01:50.93]I don't wanna talk about anyone
+[01:53.84]I don't wanna talk about anyone
+[01:56.83]I wanna sleep in your car while you're driving
+[01:59.96]Lay on your lap when I'm crying
+[02:02.28]
+[02:14.11]Weren't we the stars in Heaven?
+[02:16.99]Weren't we the salt in the sea?
+[02:19.69]Dragon in the new warm mountain
+[02:22.88]Didn't you believe in me?
+[02:24.80]
+[02:25.16]You held me the whole way through
+[02:28.17]But I couldn't say the words like you
+[02:30.94]I was scared, Indigo, but I wanted to
+[02:33.90]I was scared, Indigo, but I wanted to
+[02:36.61]
+[02:36.75]And I don't wanna talk about anything
+[02:39.59]I don't wanna talk about anything
+[02:42.56]I wanna kiss, kiss your eyes again
+[02:45.45]Wanna witness your eyes looking
+[02:48.32]I don't wanna talk about anyone
+[02:51.17]I don't wanna talk about anyone
+[02:53.99]I wanna sleep in your car while you're driving
+[02:57.34]Lay on your lap when I'm crying
+[02:59.71]  
+    `
+  },
+  "Zombie Girl": {
+    title: "Zombie Girl — Adrianne Lenker",
+    src: "Zombie Girl.mp3",
+    lyrics: `
+    [00:15.79]What a dream that was
+[00:19.93]I almost couldn't wake because
+[00:23.02]I was frozen in bed with a zombie girl
+[00:27.43]Vacant as a closed down fair
+[00:30.39]
+[00:30.39]Sleep paralysis, I sworn I could've felt you there
+[00:37.95]And I almost could've kissed your hair
+[00:41.54]But the emptiness withdrew me
+[00:45.58]From any kind of wishful prayer
+[00:48.89]
+[00:48.89]Oh, emptiness
+[00:52.82]Tell me 'bout your nature
+[00:55.27]Maybe I've been getting you wrong
+[01:00.93]I cover you with questions
+[01:04.90]Cover you with explanations
+[01:08.77]Cover you with music
+[01:13.96]
+[01:13.96]Then the next night
+[01:18.13]Dreaming I could feel your skin
+[01:21.72]But the dream escaped so easily
+[01:25.35]And I woke up to the road again
+[01:28.92]
+[01:28.92]How your words ring through
+[01:33.26]Something kinda sweet and blue
+[01:36.73]And I knew that you'd been understanding
+[01:40.87]Everything that I'd said, too
+[01:44.08]
+[01:44.08]About emptiness
+[01:48.43]Tell me 'bout your nature
+[01:50.63]Maybe I've been getting you wrong
+[01:56.57]I cover you with questions
+[02:00.38]Cover you with explanations
+[02:04.42]Cover you with music
+[02:09.98]
+[02:09.98]What's on your mind?
+[02:13.69]What's on your mind?
+[02:17.45]What's on your mind?
+[02:20.96]What's on your mind?
+[02:25.15]In your mind
+[02:44.22]
+    `
+  },
+  "Two Reverse": {
+    title: "Two Reverse — Adrianne Lenker",
+    src: "Two Reverse.mp3",
+    lyrics: `
+    [00:26.95]Lay me down so
+[00:30.53]To let you leave
+[00:35.78]Tell me lies
+[00:38.84]I wanna see your eyes
+[00:43.62]Is it a crime to say
+[00:47.75]I still need you?
+[00:52.38]Crime, wanna feed you
+[01:01.02]
+[01:01.02]Light blue, dark blue, grey
+[01:08.21]Crimson trail
+[01:12.08]Straight through, stay don't stray
+[01:22.83]
+[01:26.66]
+[01:26.66]Grandmother, Juniper
+[01:34.60]Tell to me your recipe
+[01:41.58]Is it a cry I hear
+[01:45.75]From the deep wood?
+[01:49.81]Crying, reappear
+[01:53.93]From the weeds
+[01:57.94]
+[01:57.94]Light blue, dark blue, grey
+[02:05.19]Crimson trail
+[02:08.78]Straight through, stay don't stray
+[02:18.60]
+[02:18.60]Through the jail
+[02:22.04]See the sun
+[02:27.40]Flat as a knife
+[02:30.83]Cold and white
+[02:35.32]To my home, two rivers
+[02:44.10]Through my home, two reverse
+[02:53.67]Is it a crime to do
+[02:57.42]What you ask me to?
+[03:01.04]Crime
+[03:33.32]
+    `
+  },
+  "Dragon Eyes": {
+    title: "Dragon Eyes — Adrianne Lenker",
+    src: "Dragon Eyes.mp3",
+    lyrics: `
+    [00:11.50]Freezing at the edge of the bed
+[00:16.64]Chewing a cigarette and repeating
+[00:22.85]Shadows of the words I've said
+[00:28.25]I don't wanna blame you, I don't wanna blame
+[00:34.20]
+[00:34.20]The stars bloom in the warm summer night
+[00:39.70]They have a clear view without the bedroom light
+[00:45.50]They don't wanna name you, they don't wanna name
+[00:52.35]
+[00:57.40]
+[00:57.40]Dragons have silent eyes
+[01:02.76]Cracked eggshells, fireflies
+[01:08.56]I don't wanna tame you, I don't wanna tame
+[01:15.05]
+[01:20.13]
+[01:20.13]When the hot sand burns my feet
+[01:25.76]You have cool hands, you are sweet
+[01:31.51]I don't wanna change you, I don't wanna change
+[01:38.16]
+[01:42.91]
+[01:42.91]Carnations into the vase
+[01:48.88]Unfold your clothes out of the case
+[01:54.47]I just want a place with you, I just want a place
+[02:01.00]
+[02:06.23]
+[02:06.23]As the coastline is shaped by the wind
+[02:11.93]As we make love and you're on my skin
+[02:17.93]You are changing me, you are changing
+[02:24.95]
+[02:46.73]
+[02:46.73]Stars bloom on a warm summer night
+[02:52.34]They have a clear view without the bedroom light
+[02:58.24]I just want a place with you, I just want a place
+[03:04.59]
+    `
+  },
+    "My Angel": {
+    title: "My Angel — Adrianne Lenker",
+    src: "My Angel.mp3",
+    lyrics: `
+    [02:13.22]Step over the edge too far
+[02:19.80]Open my hands to catch a wall
+[02:26.20]Nothing to hear but my very own cry
+[02:32.43]Far below the rocks and sky
+[02:37.80]
+[02:38.51]My angel, my angel
+[02:45.85]My angel, my angel
+[02:52.85]
+[02:53.35]Strange as she appears to be
+[02:59.75]Oldest friend invisibly
+[03:05.82]She brushes my hair with a physical hand
+[03:12.19]Lowers my body down to the land
+[03:17.25]
+[03:17.92]My angel, my angel
+[03:25.10]My angel, my angel
+[03:32.40]
+[04:16.15]Beneath the ledge in the morning mist
+[04:22.26]She kisses my eyelids and my wrists
+[04:28.72]Wake to the bleeding of the blade of the sun
+[04:34.75]Returning to my oxygen
+[04:40.10]
+[04:40.82]My angel, my angel
+[04:48.03]My angel, my angel
+[04:54.95]
+[04:55.23]My angel, my angel
+[05:02.10]
+    `
+  }
+};
+
+/* 🪩 Add song buttons to mini-player */
+const miniSpotify = document.querySelector(".mini-spotify");
+const songList = document.createElement("div");
+songList.style.marginTop = "12px";
+songList.style.display = "flex";
+songList.style.flexDirection = "column";
+songList.style.gap = "4px";
+
+Object.keys(songs).forEach(name => {
+  const btn = document.createElement("button");
+  btn.textContent = name;
+  btn.style.cssText = `
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+    transition: background 0.25s ease;
+  `;
+  btn.addEventListener("mouseenter", () => btn.style.background = "rgba(255,255,255,0.18)");
+  btn.addEventListener("mouseleave", () => btn.style.background = "rgba(255,255,255,0.08)");
+  btn.addEventListener("click", () => switchSong(name));
+  songList.appendChild(btn);
+});
+miniSpotify.appendChild(songList);
+
+/* 🎧 Switching songs */
+function switchSong(name) {
+  const song = songs[name];
+  if (!song) return;
+  miniSpotify.querySelector("h3").textContent = `Playing “${song.title}”`;
+  player.src = song.src;
+  player.play();
+  const parsed = parseLRC(song.lyrics);
+  lyricsEl.innerHTML = "";
+  parsed.forEach(([t, line]) => {
+    const div = document.createElement("div");
+    div.className = "lyric-line";
+    div.dataset.time = t;
+    div.textContent = line;
+    div.addEventListener("click", () => {
+      player.currentTime = t;
+      player.play();
+    });
+    lyricsEl.appendChild(div);
+  });
+  currentLyrics = parsed;
+}
+</script>
+
+</body>
+</html>
